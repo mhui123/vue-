@@ -8,6 +8,8 @@ package.json : 설치한 라이브러리 기록
 
 주로 App.vue에서 작업
 
+//js: document.getElementById().innerHTML = ??
+
 동적 데이터 출력 형식 : {{ 변수명 }} (vue) \${변수명}(JS)
 html태그안에 동적데이터 넣기 :: :대상="변수이름"
 array값 꺼내기 :: {{ array[idx] }}

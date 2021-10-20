@@ -3,9 +3,11 @@
   <!-- modal UI-->
   <div class="black-bg" v-if = "modalState == true">
     <div class="white-bg">
-      <h4>상세페이지</h4>
-      <p>내용</p>
-      <button id="modalClose" @click="closeModal">X</button>
+      <h4>{{ onerooms[checkedNumber].title }}</h4>
+      <img :src = "onerooms[checkedNumber].image">
+      <p>{{ onerooms[checkedNumber].price }}원</p>
+      <p>{{ onerooms[checkedNumber].content }}</p>
+      <button id="modalClose" @click="modalState = false;">X</button>
     </div>
   </div>
 
@@ -13,32 +15,14 @@
     <a v-for="(a,i) in menus" :key="i">{{ a }}</a>
   </div>
 
- <!-- 
-   <div class="items" v-for=" (e, i) in products" :key="i">
-    <h4 style="color: blue">{{ products[i] }}</h4>
-    <p>33 만원</p>
-    <button id="'reportBtn'+{{i}}" @click = "doReport">허위매물 신고</button> <span>신고수 : {{ reportCount }} </span>
-  </div>
-
-
-  <div>
-    <img src = "./assets/room0.jpg" class="room-img">
-    <h4 style="color: blue" id="roomName1" @click="modalState = true">{{ products[0] }}</h4>
-    <p>33 만원</p>
-    <button id="reportBtn" @click = "doReport">허위매물 신고</button>
-    <span>신고수 : {{ reportCount[0] }} </span>
-  </div>
- -->
   <div v-for="(e, i) in onerooms" :key = "i">
     <img :src = "onerooms[i].image" class="room-img">
-    <h4>{{ onerooms[i].content }}</h4>
-    <p>{{ onerooms[i].price }}</p>
+    <h4 @click="modalState = true; checkedNumber = i;">{{ e.content }}</h4>
+    <p>{{ e.price }}</p>
   </div>
 </template>
 
 <script>
-//박아넣기
-//js: document.getElementById().innerHTML = ??
 
 import roomData from './assets/oneroom.js';
 
@@ -47,6 +31,7 @@ export default {
   //data저장함
   data(){
     return {
+      checkedNumber : 0,
       onerooms : roomData,
       modalState : false,
       menus: ['Home', 'Shop', 'About'],
@@ -55,13 +40,6 @@ export default {
   },
   
   methods : {
-    doReport() {
-      this.reportCount[0] ++;
-    },
-
-    closeModal() {
-      this.modalState = false;
-    }
   },
 
   components: {
