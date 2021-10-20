@@ -20,3 +20,32 @@ array값 꺼내기 :: {{ array[idx] }}
 key의 용도: 반복문으로 생성한 태그들을 구분하기 위한 속성
 
 -- 위와 같이 사용하면 html이 짧아진다는 장점이 있음
+
+이벤트리스너 핸들러 (클릭이벤트)
+v-on:click="javascript" or @click="javascript"
+혹은
+@eventName = "functionName"
+
+event mouseover : mouse 갖다댔을때 이벤트
+
+function은 default 블록의 methods:{} object에 담아준다.
+
+--5
+이미지첨부 : <img src ="주소">
+modal
+
+동적UI 제작법:
+
+1. UI현재상태를 데이터로 저장해둠 (데이터블록 : react에서는 state라고 부름)
+2. 데이터에 따라 UI가 어떻게 표현될지 작성
+
+조건식 : v-if
+
+--6
+export:
+export default varName;
+여러변수 export : export { 변수들 }
+
+import:
+
+import {export한 변수들} from '경로'
