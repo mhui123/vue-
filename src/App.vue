@@ -1,41 +1,41 @@
 <template>
-  
-  <!-- modal UI-->
+
+  <!-- Modal -->
   <div class="black-bg" v-if = "modalState == true">
     <div class="white-bg">
-      <h4>{{ onerooms[checkedNumber].title }}</h4>
-      <img :src = "onerooms[checkedNumber].image">
-      <p>{{ onerooms[checkedNumber].price }}원</p>
-      <p>{{ onerooms[checkedNumber].content }}</p>
-      <button id="modalClose" @click="modalState = false;">X</button>
+      <h4>{{ rooms[modalNumber].title }}</h4>
+      <img :src="rooms[modalNumber].image">
+      <p>{{ rooms[modalNumber].price }}원</p>
+      <p>{{ rooms[modalNumber].content }}</p>
+      <button class="closeModalBtn" @click = "modalState = false">닫기</button>
     </div>
   </div>
 
   <div class="menu">
-    <a v-for="(a,i) in menus" :key="i">{{ a }}</a>
+    <a v-for="(a, i) in menus" :key="i">{{ menus[i] }}</a>
   </div>
 
-  <div v-for="(e, i) in onerooms" :key = "i">
-    <img :src = "onerooms[i].image" class="room-img">
-    <h4 @click="modalState = true; checkedNumber = i;">{{ e.content }}</h4>
-    <p>{{ e.price }}</p>
+  <div v-for="(a, i) in rooms" :key="i">
+    <img :src="a.image" class="room-img">
+    <h4 @click = " modalState = true; modalNumber = i ">{{ a.title }}</h4>
+    <p>{{ a.price }} 원</p>
   </div>
+
 </template>
 
 <script>
 
-import roomData from './assets/oneroom.js';
+import roomData from "./assets/oneroom.js"
 
 export default {
   name: 'App',
-  //data저장함
+
   data(){
     return {
-      checkedNumber : 0,
-      onerooms : roomData,
+      rooms: roomData,
+      menus: ["Home", "Board", "About"],
       modalState : false,
-      menus: ['Home', 'Shop', 'About'],
-      reportCount : [0, 0, 0]
+      modalNumber : 0
     }
   },
   
@@ -82,5 +82,11 @@ export default {
   width: 100%; background: white;
   border-radius: 8px;
   padding: 20px;
+}
+
+.closeModalBtn {
+  width: 100%; height:50px;
+  background:rgba(100, 100, 100, 0.5);
+  border-radius: 5px;
 }
 </style>
