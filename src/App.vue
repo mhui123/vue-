@@ -1,37 +1,31 @@
 <template>
 
   <!-- Modal -->
-  <div class="black-bg" v-if = "modalState == true">
-    <div class="white-bg">
-      <h4>{{ rooms[modalNumber].title }}</h4>
-      <img :src="rooms[modalNumber].image">
-      <p>{{ rooms[modalNumber].price }}원</p>
-      <p>{{ rooms[modalNumber].content }}</p>
-      <button class="closeModalBtn" @click = "modalState = false">닫기</button>
-    </div>
-  </div>
+  <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
 
   <div class="menu">
     <a v-for="(a, i) in menus" :key="i">{{ menus[i] }}</a>
   </div>
 
-  <div v-for="(a, i) in rooms" :key="i">
-    <img :src="a.image" class="room-img">
-    <h4 @click = " modalState = true; modalNumber = i ">{{ a.title }}</h4>
-    <p>{{ a.price }} 원</p>
-  </div>
+  <Discount/>
+
+  <Card @openModal="modalState = true; modalNumber = $event" :a = "rooms[i]" v-for="(a,i) in rooms" :key="i"/>
 
 </template>
 
 <script>
 
-import roomData from "./assets/oneroom.js"
+import roomData from "./assets/oneroom.js";
+import Discount from "./components/Discount.vue";
+import DetailModal from "./components/DetailModal.vue";
+import Card from "./components/Card.vue";
 
 export default {
   name: 'App',
 
   data(){
     return {
+      object : { name: 'kim', age: 20},
       rooms: roomData,
       menus: ["Home", "Board", "About"],
       modalState : false,
@@ -43,6 +37,9 @@ export default {
   },
 
   components: {
+    Discount : Discount,
+    DetailModal : DetailModal,
+    Card: Card,
   }
 }
 </script>
@@ -88,5 +85,12 @@ export default {
   width: 100%; height:50px;
   background:rgba(100, 100, 100, 0.5);
   border-radius: 5px;
+}
+
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius:5px;
 }
 </style>

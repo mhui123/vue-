@@ -32,8 +32,8 @@ event mouseover : mouse 갖다댔을때 이벤트
 
 function은 default 블록의 methods:{} object에 담아준다.
 
---5
-이미지첨부 : <img src ="주소">
+## 5이미지첨부 : <img src ="주소">
+
 modal
 
 동적UI 제작법:
@@ -43,7 +43,8 @@ modal
 
 조건식 : v-if
 
---6
+## 6 import export
+
 export:
 export default varName;
 여러변수 export : export { 변수들 }
@@ -51,3 +52,42 @@ export default varName;
 import:
 
 import {export한 변수들} from '경로'
+
+## 컴포넌트
+
+길고 복잡한 html을 축약하는 방법 : component
+
+- 이름.vue 로 파일을 작성해준다
+- app.vue에서 import하고 components:에 등록하여 사용한다.
+
+- 사용목적 : html 가시성 증대/ 반복사용이 필요할 시 호출해서 바로 사용가능
+- 주의 : component화 할때 바인딩 했던 데이터들도 같이 옮겨야 한다. (그냥 복붙하는 것은 중복이 생겨 문제가 발생할 수 있다.)
+
+- 데이터는 한군데다 만들어 놓고 가져다 쓰는형식으로 작성한다. (Props)
+
+## Props
+
+- 부모컴퍼넌트와 자식컴퍼넌트
+- 자식컴퍼넌트가 부모컴퍼넌트의 데이터를 가져다 쓸 때 Props문법으로 전송.
+
+1. 데이터 전송 :작명 = "데이터이름" 혹은 직접 데이터 입력 >> {
+   ex)
+   :작명 = "[ ... array ]" OR
+   :작명 = "{ ... attr }" ... etc
+   문자열은
+   작명 = "string"
+
+} (: == v-bind)
+
+2. 등록 (자식컴퍼넌트에 props:{ ... })
+
+- Props는 읽기전용이다. (수정불가)
+
+3. 사용
+
+- props(자식컴퍼넌트)에 데이터 안만드는 이유: 부모도 사용하는 데이터라면 최상위컴퍼넌트에서 선언하는 것이 유지보수에 좋다.
+
+## custom event
+
+- 자식컴퍼넌트 > 부모 컴퍼넌트 데이터 전달 : @emit('작명', 데이터) //뷰내장변수
+- 부모컴퍼넌트 수신: @작명 = "data조작... x = $event" //$event : @emit에서 전달한 데이터
