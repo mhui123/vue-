@@ -1,8 +1,12 @@
 <template>
 
   <!-- Modal -->
-  <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
-
+  <!-- <div class="start" :class="{ end: modalState }">
+    <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
+  </div> -->
+  <transition name="fade">
+    <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
+  </transition>
   <div class="menu">
     <a v-for="(a, i) in menus" :key="i">{{ menus[i] }}</a>
   </div>
@@ -92,5 +96,35 @@ export default {
   padding: 10px;
   margin: 10px;
   border-radius:5px;
+}
+/*
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.end {
+  opacity: 1;
+}
+*/
+
+.fade-enter-from {
+  transform: translateY(-1000px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY(0px);
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

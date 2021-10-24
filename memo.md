@@ -91,3 +91,27 @@ import {export한 변수들} from '경로'
 
 - 자식컴퍼넌트 > 부모 컴퍼넌트 데이터 전달 : @emit('작명', 데이터) //뷰내장변수
 - 부모컴퍼넌트 수신: @작명 = "data조작... x = $event" //$event : @emit에서 전달한 데이터
+
+## input
+
+- @input : 입력즉시 이벤트발생
+- @change: 항목변동발생시 이벤트발생
+- \$event == JS의 HTML_element.addEventListener('click', function(e){
+  e.event
+  })
+- v-model : \$event의 약어버전
+
+- input에 입력한 것은 전부 문자자료형. 숫자로 받으려면 v-model.number =
+
+## watcher :입력데이터 검증
+
+- defaulst 블록에 watch 객체
+
+- 복잡하고 귀찬은 validation은 form validation library를 이용하는 것이 좋다.
+
+## animation
+
+- <div class="start" :class="{ end: true }"> { 클래스명: 조건}
+- <transition name="작명"> : 별다른 스타일이나 구문조작없이 애니메이션효과 부여가능
+  -- css에 <<등장>> .작명-enter-from {}(시작) .작명-enter-active {}(중간?) .작명-enter-to {}(끝)
+  <<퇴장>> .작명-leave-to
