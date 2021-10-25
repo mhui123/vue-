@@ -13,7 +13,7 @@
     <a v-for="(a, i) in menus" :key="i">{{ menus[i] }}</a>
   </div>
 
-  <Discount/>
+  <Discount v-if="showDiscount == true" :discountRate = "discountRate"/>
 
   <button @click="priceSort">가격순 정렬</button>
   <button @click="priceReverseSort">가격역순 정렬</button>
@@ -35,6 +35,8 @@ export default {
 
   data(){
     return {
+      showDiscount : true,
+      discountRate : 30,
       originRooms: [... roomData],
       object : { name: 'kim', age: 20},
       rooms: roomData,
@@ -63,10 +65,14 @@ export default {
     revertSort() {
       this.rooms = [... this.originRooms];
     },
-    //가격역순 , 가나다순 정렬기능 추가
-    //되돌리기버튼
   },
 
+  mounted(){
+    setInterval(() => {
+      this.discountRate --;
+    }, 1000);
+  }
+  ,
   components: {
     Discount : Discount,
     DetailModal : DetailModal,

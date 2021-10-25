@@ -24,7 +24,7 @@ export default {
         month: 1,
       }
     },
-
+    //데이터 감시
     watch : {
       month(param) {
         if(isNaN(param)){
@@ -38,6 +38,14 @@ export default {
         rooms: Object,
         modalNumber: Number,
         modalState: Boolean,
+    },
+    //lifeCycle hook
+
+    //변경되고 나서 실행
+    beforeUpdate(){
+      if(this.month == 2){
+        alert("2를 입력했습니다.");
+      }
     }
 }
 </script>

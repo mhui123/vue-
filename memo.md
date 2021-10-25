@@ -126,3 +126,23 @@ import {export한 변수들} from '경로'
 //sort는 원본을 변환시킴
 
 //map, filter는 원본보존
+
+## component lifeCycle
+
+- 컴퍼넌트는 표시될 때 까지 일련의 과정을 거침 : 그 과정을 lifeCycle 이라고함
+
+- lifeCyle hook : lifeCycle 도중에 hook을 걸어 원하는 코드 실행가능
+
+1. script블록에 mounted(){
+   /_
+   beforeCreate()
+   created()
+   beforreMount()
+   mounted()
+   beforeUpdate()
+   updated()
+   beforUnmount()
+   unmounted()
+   등
+   _/
+   } 선언
