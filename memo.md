@@ -133,7 +133,7 @@ import {export한 변수들} from '경로'
 
 - lifeCyle hook : lifeCycle 도중에 hook을 걸어 원하는 코드 실행가능
 
-1. script블록에 mounted(){
+1. script블록에
    /_
    beforeCreate()
    created()
@@ -145,4 +145,4 @@ import {export한 변수들} from '경로'
    unmounted()
    등
    _/
-   } 선언
+   선언
