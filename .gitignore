@@ -22,3 +22,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 src/backup/backupAppvue
+src/backup/Card
+src/backup/DetailModal
+src/backup/Discount
