@@ -70,6 +70,9 @@ export default {
   mounted(){
     setInterval(() => {
       this.discountRate --;
+      if(this.discountRate <= 0){
+        this.showDiscount = false;
+      }
     }, 1000);
   }
   ,
