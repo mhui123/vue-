@@ -115,3 +115,14 @@ import {export한 변수들} from '경로'
 - <transition name="작명"> : 별다른 스타일이나 구문조작없이 애니메이션효과 부여가능
   -- css에 <<등장>> .작명-enter-from {}(시작) .작명-enter-active {}(중간?) .작명-enter-to {}(끝)
   <<퇴장>> .작명-leave-to
+
+## sort()
+
+//문자순 정렬: arr(또는 obj).sort();
+//숫자정렬 arr.sort(function(a, b){
+// return a - b; 음수면 b를 a와 위치전환.
+//})
+
+//sort는 원본을 변환시킴
+
+//map, filter는 원본보존

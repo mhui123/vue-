@@ -4,16 +4,22 @@
   <!-- <div class="start" :class="{ end: modalState }">
     <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
   </div> -->
+
   <transition name="fade">
     <DetailModal @closeModal="modalState = false" :rooms = "rooms" :modalNumber = "modalNumber" :modalState = "modalState"/>
   </transition>
+
   <div class="menu">
     <a v-for="(a, i) in menus" :key="i">{{ menus[i] }}</a>
   </div>
 
   <Discount/>
 
-  <Card @openModal="modalState = true; modalNumber = $event" :a = "rooms[i]" v-for="(a,i) in rooms" :key="i"/>
+  <button @click="priceSort">가격순 정렬</button>
+  <button @click="priceReverseSort">가격역순 정렬</button>
+  <button @click="sortAlphabet">문자순 정렬</button>
+  <button @click="revertSort">되돌리기</button>
+  <Card @openModal = "modalState = true; modalNumber = $event" :a = "rooms[i]" v-for="(a,i) in rooms" :key="i"/>
 
 </template>
 
@@ -29,6 +35,7 @@ export default {
 
   data(){
     return {
+      originRooms: [... roomData],
       object : { name: 'kim', age: 20},
       rooms: roomData,
       menus: ["Home", "Board", "About"],
@@ -38,6 +45,26 @@ export default {
   },
   
   methods : {
+    priceSort() {
+      this.rooms.sort(function(a, b) {
+        return a.price - b.price;
+      });
+    },
+    priceReverseSort() {
+      this.rooms.sort(function(a, b) {
+        return b.price - a.price;
+      })
+    },
+    sortAlphabet() {
+      this.rooms.sort(function(a, b){
+        return a.title.localeCompare(b.title);
+      });
+    },
+    revertSort() {
+      this.rooms = [... this.originRooms];
+    },
+    //가격역순 , 가나다순 정렬기능 추가
+    //되돌리기버튼
   },
 
   components: {
@@ -69,7 +96,7 @@ export default {
 }
 
 .room-img {
-  width: 100%;
+  width: 50%;
   margin-top: 40px;
 }
 
